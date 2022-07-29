@@ -1,27 +1,36 @@
 def get_composite_indicator(norm_ind_vals):
-	NUM_CATEGORIES = 7
-	weights = [24.2, 16.2, 17.5, 13.6, 15.4, 3.0, 1.9]
-
+	weights = [
+		0.1,
+		0.1,
+		0.1,
+		0.1,
+		0.1,
+		0.1,
+		0.0667,
+		0.0667,
+		0.0667,
+		0.2
+	]
 	total = 0
-	for i in range(0, NUM_CATEGORIES):
-		total += norm_ind_vals[i] * weights[i]
-
+	for x in range(len(weights)):
+		total = total + (weights[x] * norm_ind_vals[x])
+	
 	return total
 
 def main():
-	china = [5, 6, 7, 8, 9, 10, 11]
-	us = [4, 6, 7, 8, 9, 10, 11]
-	india = [3, 6, 7, 8, 9, 10, 11]
-
-	countries = [get_composite_indicator(china), get_composite_indicator(us), get_composite_indicator(india)]
-
-	maxi = -1
-	for i in range(0, len(countries)):
-		maxi = max(maxi, countries[i])
-
-	for i in range(0, len(countries)):
-		countries[i] = (countries[i] / maxi) * 100
-
-	print(countries)
+	LA = [
+		10.999249,
+		2.1032,
+		0.76534,
+		52,
+		10224,
+		50,
+		1.5092,
+		1935,
+		0.00001429207,
+		0.6292
+	]
+	indic_val = get_composite_indicator(LA)
+	print(indic_val)
 
 main()
